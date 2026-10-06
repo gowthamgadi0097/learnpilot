@@ -1,0 +1,24 @@
+{
+  "name": "learnpilot",
+  "version": "1.0.0",
+  "description": "LearnPilot: B.Tech AI tutor with teacher and student portals (Express + SQLite + web app)",
+  "main": "server.js",
+  "scripts": {
+    "prestart": "node scripts/setup.js",
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.40.0",
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "private": true
+}

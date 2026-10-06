@@ -1,0 +1,28 @@
+# Render "Blueprint": one-click deploy. A persistent disk is REQUIRED because the database is a file;
+# disks are not available on Render's free plan, so this uses the smallest paid plan (the default).
+services:
+  - type: web
+    name: learnpilot
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    disk:
+      name: learnpilot-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: DB_FILE
+        value: /var/data/learnpilot.db
+      - key: JWT_SECRET
+        generateValue: true
+      - key: TEACHER_EMAIL
+        sync: false
+      - key: TEACHER_PASSWORD
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
